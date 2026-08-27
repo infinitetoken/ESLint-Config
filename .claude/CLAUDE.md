@@ -34,14 +34,15 @@ The `publish.yml` workflow fires on `v*` tags and runs `npm publish`.
 | `./npm-package` | Published npm packages with no RN/server specifics (kits, Node plugins) |
 | `./react-native` | React Native packages |
 | `./server` | Express/server apps (unpublished) |
+| `./vue` | Vue/Nuxt apps (unpublished); standalone, does not compose on `index.cjs` |
 | `./prettier` | Shared Prettier rules object |
 
-Each preset composes the one below it (`react-native.cjs` requires `npm-package.cjs`, which requires `index.cjs`). Repo-specific overrides belong in the consuming repo's own `eslint.config.cjs`, composed via `defineConfig([...require(...), { ... }])`; never add repo-specific rules here.
+`react-native.cjs` and `server.cjs` compose on top of `npm-package.cjs`/`index.cjs`. `vue.cjs` is standalone instead — its ignores, TS parsing (no type-aware project, since Nuxt's generated tsconfig makes that awkward), and `no-unused-vars` rule shape all differ enough from the core that composing would mean overriding nearly everything anyway. Repo-specific overrides belong in the consuming repo's own `eslint.config.cjs`, composed via `defineConfig([...require(...), { ... }])`; never add repo-specific rules here.
 
-`eslint-plugin-react-hooks` and `eslint-plugin-react-native` are optional peer dependencies, not bundled dependencies, since `eslint-plugin-react-native@5` only supports `eslint` up to v9, and bundling it would force that ceiling onto every consumer, not just React Native ones.
+`eslint-plugin-react-hooks` and `eslint-plugin-react-native` are optional peer dependencies, not bundled dependencies, since `eslint-plugin-react-native@5` only supports `eslint` up to v9, and bundling it would force that ceiling onto every consumer, not just React Native ones. `eslint-plugin-vue`/`vue-eslint-parser` don't have that problem (verified against `eslint@^10`), so they're bundled as regular dependencies like the rest.
 
 ## Code Style
 
-This repo dogfoods itself: root `eslint.config.cjs` and `prettier.config.cjs` both `require()` this package's own `npm-package.cjs`/`prettier.cjs` by relative path. Always run `npm run lint` before finishing any task.
+This repo dogfoods itself: root `eslint.config.cjs` requires this package's own `npm-package.cjs` by relative path, and `package.json`'s `"prettier"` field points at `./prettier.cjs` the same way. Always run `npm run lint` before finishing any task.
 
 Single quotes, JSX single quotes, no semicolons, no trailing commas, print width 1000 (effectively disabled).

@@ -2,7 +2,7 @@
 const assert = require('node:assert/strict')
 const path = require('node:path')
 
-const configExports = ['index.cjs', 'npm-package.cjs', 'react-native.cjs', 'server.cjs']
+const configExports = ['index.cjs', 'npm-package.cjs', 'react-native.cjs', 'server.cjs', 'vue.cjs']
 
 for (const file of configExports) {
   const config = require(path.join('..', file))
