@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const assert = require('node:assert/strict')
 const path = require('node:path')
 
