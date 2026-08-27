@@ -34,7 +34,7 @@ The `publish.yml` workflow fires on `v*` tags and runs `npm publish`.
 | `./npm-package` | Published npm packages with no RN/server specifics (kits, Node plugins) |
 | `./react-native` | React Native packages |
 | `./server` | Express/server apps (unpublished) |
-| `./vue` | Vue/Nuxt apps (unpublished); standalone, does not compose on `index.cjs` |
+| `./vue` | Vue/Nuxt apps; standalone, does not compose on `index.cjs`; includes the `package.json` plugin like `npm-package.cjs` does, inlined directly rather than composed (composing on `npm-package.cjs` would double up ignores/parser config) |
 | `./prettier` | Shared Prettier rules object |
 
 `react-native.cjs` and `server.cjs` compose on top of `npm-package.cjs`/`index.cjs`. `vue.cjs` is standalone instead — its ignores, TS parsing (no type-aware project, since Nuxt's generated tsconfig makes that awkward), and `no-unused-vars` rule shape all differ enough from the core that composing would mean overriding nearly everything anyway. Repo-specific overrides belong in the consuming repo's own `eslint.config.cjs`, composed via `defineConfig([...require(...), { ... }])`; never add repo-specific rules here.

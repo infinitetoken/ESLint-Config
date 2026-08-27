@@ -10,7 +10,7 @@ Shared ESLint (flat config) and Prettier rules for InfiniteToken TypeScript pack
 | `@infinitetoken/eslint-config/npm-package` | Any published npm package with no React Native or server specifics (kits, Node plugins) |
 | `@infinitetoken/eslint-config/react-native` | React Native packages; adds `eslint-plugin-react-hooks` and `eslint-plugin-react-native` |
 | `@infinitetoken/eslint-config/server` | Express/server apps; relaxed `no-unused-vars` (`^_` ignore pattern), `no-explicit-any: warn`, skips the `package.json` plugin since these aren't published |
-| `@infinitetoken/eslint-config/vue` | Vue/Nuxt apps; adds `vue-eslint-parser` + `eslint-plugin-vue`'s `flat/recommended`, no type-aware TS parsing (Nuxt's generated tsconfig makes that awkward), skips the `package.json` plugin since these aren't published |
+| `@infinitetoken/eslint-config/vue` | Vue/Nuxt apps; adds `vue-eslint-parser` + `eslint-plugin-vue`'s `flat/recommended`, no type-aware TS parsing (Nuxt's generated tsconfig makes that awkward) |
 | `@infinitetoken/eslint-config/prettier` | The shared Prettier rules object, for the `"prettier"` field in `package.json` |
 
 ## Usage

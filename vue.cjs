@@ -5,6 +5,7 @@ const tsParser = require('@typescript-eslint/parser')
 const tsEslint = require('typescript-eslint')
 const vueParser = require('vue-eslint-parser')
 const pluginVue = require('eslint-plugin-vue')
+const packageJson = require('eslint-plugin-package-json')
 
 module.exports = defineConfig([
   {
@@ -32,6 +33,15 @@ module.exports = defineConfig([
   ...tsEslint.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
   prettierRecommended,
+  packageJson.configs.recommended,
+  {
+    extends: [packageJson.configs.recommended],
+    files: ['package.json'],
+    rules: {
+      'package-json/order-properties': 'warn',
+      'package-json/sort-collections': 'warn'
+    }
+  },
   {
     plugins: {
       'simple-import-sort': simpleImportSort
