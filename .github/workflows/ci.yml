@@ -10,5 +10,3 @@ on:
 jobs:
   quality:
     uses: infinitetoken/Workflows/.github/workflows/npm-ci.yml@v1
-    with:
-      script: ci

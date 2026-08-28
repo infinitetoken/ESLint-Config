@@ -12,7 +12,7 @@ Shared ESLint (flat config) and Prettier rules for InfiniteToken TypeScript pack
 npm run lint   # ESLint check
 npm run fix    # Auto-fix lint/format issues
 npm test       # Verify every preset resolves and loads correctly
-npm run ci     # lint + test
+npm run verify     # lint + test
 ```
 
 ## Release

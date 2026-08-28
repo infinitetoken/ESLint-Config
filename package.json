@@ -37,7 +37,6 @@
     "prettier.cjs"
   ],
   "scripts": {
-    "ci": "npm run lint && npm test",
     "fix": "eslint . --fix",
     "lint": "eslint .",
     "release": "git push --follow-tags",
@@ -45,7 +44,8 @@
     "release:minor": "npm version minor && npm run release",
     "release:patch": "npm version patch && npm run release",
     "test": "node scripts/verify-exports.cjs",
-    "preversion": "npm run ci"
+    "verify": "npm run lint && npm test",
+    "preversion": "npm run verify"
   },
   "prettier": "./prettier.cjs",
   "dependencies": {
