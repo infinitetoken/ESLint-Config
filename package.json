@@ -49,6 +49,7 @@
   },
   "prettier": "./prettier.cjs",
   "dependencies": {
+    "@infinitetoken/eslint-config": "^0.1.5",
     "@typescript-eslint/parser": "^8.59.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-package-json": "^1.0.0",
