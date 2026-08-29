@@ -1,1 +1,1 @@
-module.exports = require('./npm-package.cjs')
+module.exports = require('./src/npm-package.cjs')

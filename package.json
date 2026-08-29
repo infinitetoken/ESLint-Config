@@ -21,20 +21,15 @@
   "sideEffects": false,
   "type": "commonjs",
   "exports": {
-    ".": "./index.cjs",
-    "./npm-package": "./npm-package.cjs",
-    "./prettier": "./prettier.cjs",
-    "./react-native": "./react-native.cjs",
-    "./server": "./server.cjs",
-    "./vue": "./vue.cjs"
+    ".": "./src/index.cjs",
+    "./npm-package": "./src/npm-package.cjs",
+    "./prettier": "./src/prettier.cjs",
+    "./react-native": "./src/react-native.cjs",
+    "./server": "./src/server.cjs",
+    "./vue": "./src/vue.cjs"
   },
   "files": [
-    "index.cjs",
-    "npm-package.cjs",
-    "react-native.cjs",
-    "server.cjs",
-    "vue.cjs",
-    "prettier.cjs"
+    "src"
   ],
   "scripts": {
     "fix": "eslint . --fix",
@@ -47,7 +42,7 @@
     "verify": "npm run lint && npm test",
     "preversion": "npm run verify"
   },
-  "prettier": "./prettier.cjs",
+  "prettier": "./src/prettier.cjs",
   "dependencies": {
     "@infinitetoken/eslint-config": "^0.1.5",
     "@typescript-eslint/parser": "^8.59.3",
