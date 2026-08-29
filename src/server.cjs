@@ -5,7 +5,6 @@ module.exports = defineConfig([
   ...base,
   {
     rules: {
-      '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'warn'
     }
   },
