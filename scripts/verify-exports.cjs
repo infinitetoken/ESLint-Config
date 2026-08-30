@@ -2,7 +2,7 @@
 const assert = require('node:assert/strict')
 const path = require('node:path')
 
-const configExports = ['index.cjs', 'npm-package.cjs', 'react-native.cjs', 'server.cjs', 'vue.cjs']
+const configExports = ['index.cjs', 'npm-package.cjs', 'react-native.cjs', 'server.cjs', 'vue.cjs', 'expo.cjs']
 
 for (const file of configExports) {
   const config = require(path.join('..', 'src', file))
@@ -29,3 +29,16 @@ const testMockOverride = npmPackageConfig.find((block) => block.files?.includes(
 assert.ok(testMockOverride, 'npm-package.cjs should have a __tests__/__mocks__ files override')
 assert.equal(testMockOverride.rules['@typescript-eslint/no-explicit-any'], 'off', 'npm-package.cjs should turn off no-explicit-any for __tests__/__mocks__, not ignore them entirely')
 console.log('npm-package.cjs (tsup.config.ts ignore + test/mock any relaxation): OK')
+
+const reactNativeConfig = require('../src/react-native.cjs')
+const reactNativeRulesBlock = reactNativeConfig.find((block) => block.rules?.['react-native/sort-styles'])
+assert.ok(reactNativeRulesBlock, 'react-native.cjs should set react-native/sort-styles')
+console.log('react-native.cjs (sort-styles rule): OK')
+
+const expoConfig = require('../src/expo.cjs')
+const expoIgnores = expoConfig.flatMap((block) => block.ignores || [])
+assert.ok(expoIgnores.includes('ios/**') && expoIgnores.includes('android/**') && expoIgnores.includes('.expo/**'), 'expo.cjs should ignore native build dirs (ios/**, android/**, .expo/**)')
+const expoUnusedVarsBlock = [...expoConfig].reverse().find((block) => block.rules?.['@typescript-eslint/no-unused-vars'])
+assert.ok(expoUnusedVarsBlock, 'expo.cjs should end up with a @typescript-eslint/no-unused-vars rule in effect')
+assert.deepEqual(expoUnusedVarsBlock.rules['@typescript-eslint/no-unused-vars'][1], { varsIgnorePattern: '^_', argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' }, 'expo.cjs should apply the fleet-wide ^_ ignore pattern last, so eslint-config-expo/flat cannot win that rule back')
+console.log('expo.cjs (native-dir ignores + ^_ pattern wins over eslint-config-expo/flat): OK')

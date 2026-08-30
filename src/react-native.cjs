@@ -14,6 +14,7 @@ module.exports = defineConfig([
       'react-native/no-inline-styles': 'warn',
       'react-native/no-unused-styles': 'warn',
       'react-native/no-raw-text': 'off',
+      'react-native/sort-styles': 'warn',
       // rules-of-hooks stays at error since it's the foundational hook-ordering check, not a
       // judgment call. The rest match the fleet's severities (warn, not error).
       'react-hooks/rules-of-hooks': 'error',

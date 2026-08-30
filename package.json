@@ -22,6 +22,7 @@
   "type": "commonjs",
   "exports": {
     ".": "./src/index.cjs",
+    "./expo": "./src/expo.cjs",
     "./npm-package": "./src/npm-package.cjs",
     "./prettier": "./src/prettier.cjs",
     "./react-native": "./src/react-native.cjs",
@@ -57,15 +58,20 @@
   },
   "devDependencies": {
     "eslint": "^9.39.4",
+    "eslint-config-expo": "^57.0.2",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-native": "^5.0.0"
   },
   "peerDependencies": {
     "eslint": "^9.9.0 || ^10.0.0",
+    "eslint-config-expo": "^57.0.0",
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-native": "^5.0.0"
   },
   "peerDependenciesMeta": {
+    "eslint-config-expo": {
+      "optional": true
+    },
     "eslint-plugin-react-hooks": {
       "optional": true
     },
