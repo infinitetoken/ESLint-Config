@@ -1,6 +1,6 @@
 {
   "name": "@infinitetoken/eslint-config",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Shared ESLint and Prettier configuration for InfiniteToken TypeScript packages",
   "keywords": [
     "config",
