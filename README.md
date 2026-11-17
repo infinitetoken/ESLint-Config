@@ -51,3 +51,7 @@ Tag-based, using npm trusted publishing (OIDC, no token required):
 npm version patch   # or minor / major
 git push --follow-tags
 ```
+
+---
+
+Made by [Infinite Token](https://www.infinitetoken.com), the team behind [Lumber](https://lumber.infinitetoken.com): end-to-end encrypted logging.
